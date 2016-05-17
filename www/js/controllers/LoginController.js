@@ -1,4 +1,4 @@
-app.controller('LoginController', function ($scope, $state, $sanitize, localSocket, $rootScope) {
+app.controller('LoginController', function ($scope, $state, $sanitize, ServerSocketFactory, $rootScope) {
   // var self = this;
   // $scope.name = {};
   // $scope.join = function () {
@@ -43,7 +43,7 @@ app.controller('LoginController', function ($scope, $state, $sanitize, localSock
       bpm: 60
   });
 
-  localSocket.on('play', function (data) {
+  ServerSocketFactory.on('play', function (data) {
     console.log('play');
     show = data.show; //get the show script
     Tone.Transport.start(); //start Transport
