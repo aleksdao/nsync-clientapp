@@ -29,10 +29,6 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','btford.socket-i
       url: '/login',
       templateUrl: 'templates/login.html',
     })
-    .state('Chat', {
-      url: '/chat/:nickname',
-      templateUrl: 'templates/chat.html'
-    })
 
-    $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/login');
 })

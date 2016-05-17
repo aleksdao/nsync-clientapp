@@ -1,16 +1,4 @@
 app.controller('LoginController', function ($scope, $state, $sanitize, ServerSocketFactory, $rootScope) {
-  // var self = this;
-  // $scope.name = {};
-  // $scope.join = function () {
-  //   // console.log($scope.logcntrl.nickname);
-  //   // var nickname = $scope.nickname;
-  //   // console.log($scope.name.nickname)
-  //   var nickname = $sanitize($scope.name.nickname);
-  //   // console.log($scope.nickname);
-  //   if (nickname)
-  //     $state.go('Chat', { nickname: nickname });
-  //
-  // }
 
   var show;
   var prevColor;
