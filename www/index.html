@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"> -->
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!--socket io client library-->
+    <!-- <script src="http://chat.socket.io/socket.io/socket.io.js" type="text/javascript"></script> -->
+    <script src="http://chat.socket.io/socket.io/socket.io.js" type="text/javascript"></script>
+
+
+
+    <!-- Other Libraries-->
+    <script src="lib/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="lib/angular-socket-io/socket.js"></script>
+    <script src="lib/angular-tone/dist/angular-tone.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+
+    <!-- your controllers' js -->
+    <!-- <script src="js/controllers/ChatController.js"></script> -->
+    <script src="js/controllers/LoginController.js"></script>
+
+    <!--your services' js -->
+    <script src="js/factories/socket.js"></script>
+
+    <!--your directives' js -->
+    <!-- <script src="js/directives.js"></script> -->
+
+  </head>
+  <body id="changeColor" ng-app="ionic-socketio-chat-client">
+    <ion-nav-bar>
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view></ion-nav-view>
+
+  </body>
+  <script type="text/javascript" src="http://cdn.tonejs.org/latest/Tone.min.js"></script>
+
+<!-- <script>
+    //connect to socket server
+    var socket = io.connect('http://localhost:3000');
+    console.log(socket);
+</script>
+
+<script>
+    //init the show
+    var show;
+
+    //set show speed: 60 BPM = 1 quarter per second
+    Tone.Transport.set({
+        bpm: 60
+    });
+
+    //wait for the play command
+    socket.on('play', function(data) {
+        show = data.show; //get the show script
+        console.log(show);
+        Tone.Transport.start(); //start Transport
+    });
+
+    //schedule a listener to fire every quarter note
+    Tone.Transport.scheduleRepeat(runEvent, "4n", 0);
+
+    function runEvent(time) {
+
+        //grab current time code position
+        var currPos = Tone.Transport.position;
+
+        //check to see if the show is over, if so, stop Transport
+        if (currPos === show.length) {
+            Tone.Transport.position = 0;
+            return Tone.Transport.stop();
+        }
+
+        var body = document.getElementById('changeColor');
+
+        if (show[currPos]) //if there is an event at this time, change the DOM
+            body.style.backgroundColor = show[currPos].changeColor;
+
+    }
+</script> -->
+</html>
