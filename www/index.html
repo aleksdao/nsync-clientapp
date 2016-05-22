@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"> -->
+
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'"> -->
     <title></title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
@@ -18,7 +20,9 @@
 
     <!--socket io client library-->
     <!-- <script src="http://chat.socket.io/socket.io/socket.io.js" type="text/javascript"></script> -->
-    <script src="http://chat.socket.io/socket.io/socket.io.js" type="text/javascript"></script>
+    <!-- <script src="http://chat.socket.io/socket.io/socket.io.js" type="text/javascript"></script> -->
+    <script src="js/socket.io.js" type="text/javascript"></script>
+
 
 
 
@@ -26,7 +30,7 @@
     <script src="lib/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="lib/angular-socket-io/socket.js"></script>
     <script src="lib/angular-tone/dist/angular-tone.js"></script>
-
+    <script src="js/ng-cordova.min.js"></script>
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
@@ -36,9 +40,13 @@
     <!-- your controllers' js -->
     <!-- <script src="js/controllers/ChatController.js"></script> -->
     <script src="js/controllers/LoginController.js"></script>
+    <script src="js/controllers/camera.Controller.js"></script>
+
 
     <!--your services' js -->
     <script src="js/factories/socket.js"></script>
+    <script src="js/factories/image.Factory.js"></script>
+
 
     <!--your directives' js -->
     <!-- <script src="js/directives.js"></script> -->
