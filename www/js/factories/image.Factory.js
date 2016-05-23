@@ -1,4 +1,4 @@
-app.factory('imageFactory',function($http, ionicReady){
+app.factory('imageFactory',function($http, ionicReady, $cordovaFileTransfer){
 
 	return{
 	// 	getSamplePhoto : function(){
@@ -21,14 +21,15 @@ app.factory('imageFactory',function($http, ionicReady){
 		// 	});
 		// },
 
-		postPhoto: function(imageData){
+		postPhoto: function(imageDataIn){
 			// console.log(imageData);
+			var imageData = imageDataIn;
 
-			ionicReady().then(function(imageData) {
+			ionicReady().then(function() {
 			  var ft = new FileTransfer();
-			  console.log('ft', ft);
+			  // console.log('ft', ft);
 
-        var server = 'http://localhost:5000/api/photo';
+        var server = 'http://10.0.0.12:5000/api/photo';
 
         var trustAllHosts = true;
 
@@ -40,11 +41,11 @@ app.factory('imageFactory',function($http, ionicReady){
 
             $cordovaFileTransfer.upload(encodeURI(server), imageData, ftOptions, trustAllHosts)
               .then(function(result) {
-              console.log('success: ' + angular.toJson(result));
+              console.log('success in here dude: ' + angular.toJson(result));
               },
               function(err) {
               // Error
-                console.log('error: ' + err);
+                console.log('error in here dude: ' + err);
               },
               function (progress) {
               // constant progress updates

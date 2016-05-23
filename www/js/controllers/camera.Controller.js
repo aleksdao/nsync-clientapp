@@ -7,7 +7,7 @@ app.controller('cameraController', function($scope, $cordovaCamera, imageFactory
       // Success!
       console.log('file uploaded');
     }, function(err) {
-      // Error
+      console.log('file not so uploaded!!!!');
     }, function (progress) {
       // constant progress updates
     });
