@@ -21,8 +21,8 @@ app.controller('cameraController', function($scope, $cordovaCamera, imageFactory
             sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: false,
             encodingType: Camera.EncodingType.JPEG,
-            targetWidth: 500,
-            targetHeight: 500,
+            targetWidth: 1944,
+            targetHeight: 2592,
             popoverOptions: CameraPopoverOptions,
             saveToPhotoAlbum: false
         };
