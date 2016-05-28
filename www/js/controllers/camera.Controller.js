@@ -5,7 +5,7 @@ app.controller('cameraController', function($scope, $cordovaCamera, imageFactory
     imageFactory.postPhoto($scope.srcImage)
     .then(function(result) {
       // Success!
-      console.log('file uploaded');
+      console.log('file uploaded in controller');
     }, function(err) {
       console.log('file not so uploaded!!!!');
     }, function (progress) {
@@ -18,6 +18,7 @@ app.controller('cameraController', function($scope, $cordovaCamera, imageFactory
         var options = {
             quality: 80,
             destinationType: Camera.DestinationType.DATA_URL,
+            // destinationType: Camera.DestinationType.FILE_URI,
             sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: false,
             encodingType: Camera.EncodingType.JPEG,

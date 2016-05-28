@@ -40,4 +40,4 @@ app.controller('LoginController', function ($scope, $state, $sanitize, ServerSoc
   Tone.Transport.scheduleRepeat(runEvent, "4n", 0);
 
 
-})
+});

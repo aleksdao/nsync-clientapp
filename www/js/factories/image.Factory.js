@@ -1,35 +1,14 @@
-app.factory('imageFactory',function($http, ionicReady, $cordovaFileTransfer){
+app.factory('imageFactory',function($http, ionicReady, $cordovaFileTransfer, $cordovaToast, $cordovaVibration){
 
 	return{
-	// 	getSamplePhoto : function(){
-	// 		return $http.get("http://localhost:5000/api/photo",{responseType: "blob"})
-	// 			.then(function(data){
-	// 				// var file = new File([data], "sample.jpg");
-	// 				return data;
-	// 			});
-	// },
-
-
-
-		// postPhoto : function(photo){
-		// 	return $http.post('http://localhost:5000/api/photo', {myPhoto:photo})
-		// 	.then(function(response){
-		// 		console.log('response!', response);
-		// 		return response;
-		// 	},function(err){
-		// 		return err;
-		// 	});
-		// },
 
 		postPhoto: function(imageDataIn){
-			// console.log(imageData);
 			var imageData = imageDataIn;
 
 			ionicReady().then(function() {
 			  var ft = new FileTransfer();
-			  // console.log('ft', ft);
 
-        var server = 'http://10.0.0.12:5000/api/photo';
+        var server = 'http://192.168.2.47:5000/api/photo';
 
         var trustAllHosts = true;
 
@@ -41,10 +20,12 @@ app.factory('imageFactory',function($http, ionicReady, $cordovaFileTransfer){
 
             $cordovaFileTransfer.upload(encodeURI(server), imageData, ftOptions, trustAllHosts)
               .then(function(result) {
-              console.log('success in here dude: ' + angular.toJson(result));
+								console.log('success in here dude: ' + angular.toJson(result));
+								$cordovaVibration.vibrate(200);
+								$cordovaToast
+								.showLongCenter('Photo Sent!');
               },
               function(err) {
-              // Error
                 console.log('error in here dude: ' + err);
               },
               function (progress) {
@@ -55,6 +36,8 @@ app.factory('imageFactory',function($http, ionicReady, $cordovaFileTransfer){
 
 	};
 })
+
+//this is method that returns a promise that is resolved when the device is ready
 .factory('ionicReady', function($ionicPlatform) {
   var readyPromise;
 
