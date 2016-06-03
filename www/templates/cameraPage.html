@@ -1,24 +1,14 @@
-<!-- <ion-view ng-controller="LoginController as logcntrl" class="light">
 
-  <ion-content>
-    hi
-    <div class="list list-inset light top180">
-      <label class="item item-input linegrey">
-        <input type="text" class="linegrey white" placeholder="What is your nickname?" ng-model="lognctrl.nickname">
-      </label>
-      <button class="button button-block button-grey" ng-click="lognctrl.join()">Join</button>
-    </div>
-  </ion-content>
-<ion-view> -->
 
 
   <ion-view view-title="Camera Page" id="cameraPage" ng-controller="cameraController">
     <ion-pane>
     <ion-content padding="true">
-        <img ng-src="{{srcImage || &apos;img/test.jpg&apos;}}" id="srcImage" width="300 " height="400" style="display: block; margin: 0 auto;"><br>
+        <img ng-src="{{srcImage || &apos;img/test.jpg&apos;}}" id="srcImage" width="300 " height="400 " style="display: block; margin: 0 auto;"><br>
 
         <button class="button button-full button-positive " ng-click="takeImage() ">Take Image</button><br>
         <button class="button button-full button-positive " ng-click="UploadImage() ">Upload</button><br>
+      
 
 
         <!-- <div class="list ">
@@ -35,13 +25,4 @@
     </ion-content>
 </ion-pane>
 
-    <!-- <ion-content>
-  	  <div class="list list-inset light top180">
-  	  	<label class="item item-input linegrey" >
-  	    	<input type="text" class="linegrey white" placeholder="What is your nickname?" ng-model="name.nickname">
-  	  	</label>
-        {{nickname}}
-  	  	<button class="button button-block button-grey" ng-click="join()">Join</button>
-  	  </div>
-    </ion-content> -->
   </ion-view>

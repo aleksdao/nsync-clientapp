@@ -14,6 +14,8 @@
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
+    <script src="/lib/velocity-animate/velocity.min.js"></script>
+
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
@@ -29,12 +31,23 @@
     <!-- Other Libraries-->
     <script src="lib/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="lib/angular-socket-io/socket.js"></script>
-    <script src="lib/angular-tone/dist/angular-tone.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <!-- <script src="lib/angular-velocity/angular-velocity.js"></script> -->
+
+    <!-- <script src="lib/angular-tone/dist/angular-tone.js"></script> -->
     <script src="js/ng-cordova.min.js"></script>
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
+    <script type="text/javascript" src="lib/tone/build/Tone.js"></script>
+
+
+    <!-- load from Joel's code -->
+    <!-- <script src="/js/socket.io.js"></script> -->
+    <!-- <script src="/node_modules/tone/build/Tone.js"></script> -->
+
 
     <!-- your app's js -->
+    <!-- <script src="js/eventPage.js"></script> -->
     <script src="js/app.js"></script>
 
     <!-- your controllers' js -->
@@ -46,13 +59,15 @@
     <!--your services' js -->
     <script src="js/factories/socket.js"></script>
     <script src="js/factories/image.Factory.js"></script>
+    <script src="js/factories/ipAddress.Factory.js"></script>
+
 
 
     <!--your directives' js -->
     <!-- <script src="js/directives.js"></script> -->
 
   </head>
-  <body id="changeColor" ng-app="ionic-socketio-chat-client">
+  <body  ng-app="ionic-socketio-chat-client">
     <ion-nav-bar>
       <ion-nav-back-button>
       </ion-nav-back-button>
@@ -60,49 +75,6 @@
     <ion-nav-view></ion-nav-view>
 
   </body>
-  <script type="text/javascript" src="http://cdn.tonejs.org/latest/Tone.min.js"></script>
 
-<!-- <script>
-    //connect to socket server
-    var socket = io.connect('http://localhost:3000');
-    console.log(socket);
-</script>
 
-<script>
-    //init the show
-    var show;
-
-    //set show speed: 60 BPM = 1 quarter per second
-    Tone.Transport.set({
-        bpm: 60
-    });
-
-    //wait for the play command
-    socket.on('play', function(data) {
-        show = data.show; //get the show script
-        console.log(show);
-        Tone.Transport.start(); //start Transport
-    });
-
-    //schedule a listener to fire every quarter note
-    Tone.Transport.scheduleRepeat(runEvent, "4n", 0);
-
-    function runEvent(time) {
-
-        //grab current time code position
-        var currPos = Tone.Transport.position;
-
-        //check to see if the show is over, if so, stop Transport
-        if (currPos === show.length) {
-            Tone.Transport.position = 0;
-            return Tone.Transport.stop();
-        }
-
-        var body = document.getElementById('changeColor');
-
-        if (show[currPos]) //if there is an event at this time, change the DOM
-            body.style.backgroundColor = show[currPos].changeColor;
-
-    }
-</script> -->
 </html>

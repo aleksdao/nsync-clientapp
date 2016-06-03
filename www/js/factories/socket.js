@@ -1,6 +1,9 @@
-app.factory('ServerSocketFactory', function (socketFactory) {
+app.factory('ServerSocketFactory', function (socketFactory, ipAddressFactory) {
+
+var socketIP = ipAddressFactory.socketAddress();
+
   //create socket and connect to http://localhost:3000
-  var myIOSocket = io.connect('http://192.168.2.53:3000');
+  var myIOSocket = io.connect('http://' + socketIP);
   mySocket = socketFactory({
     ioSocket: myIOSocket
   });

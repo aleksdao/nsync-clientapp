@@ -11,11 +11,20 @@
   </ion-content>
 <ion-view> -->
 
-
-  <ion-view view-title="Login (ion-nav-bar)" id="changeColor1" ng-controller="LoginController">
+<ion-view view-title="Login" id="changeColor" ng-controller="LoginController">
+  <!-- <ion-view view-title="Login" id="changeColor" ng-controller="LoginController" ng-style="{'background-color': itemColor}"> -->
     <ion-content>
-      <h2>Ion-view area (responding to play events)</h2>
-      <div class="button button-block button-stable" ui-sref="cameraPage">Go to Camera page</div>
+          <div >
+              <h1>Boots and Cats</h1>
+              <div class="button button-block button-stable" ui-sref="cameraPage">Go to Camera page</div>
+              <!-- <div class="button button-block button-stable" ng-click="goToMosaic()">Go to Mosaic</div> -->
+              <a class="item" href="#" onclick="window.open('http://www.cnn.com', '_blank', 'location=yes'); return false;">
+                      Open a Browser
+                  </a>
+
+
+              {{ message }}
+          </div>
     </ion-content>
 
     <!-- <ion-content>
