@@ -1,10 +1,3 @@
-/* Empty. Add your own CSS if you like */
-/*Custom Color*/
-#changeColor{
-
-  /*background-color:red;*/
-}
-
 
 .button.button-grey {
     border-color: #585858;
@@ -112,6 +105,11 @@ padding-top: 0px;
 	bottom:68px;
 }
 .button.button-full.button-positive{
+  width:200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+a.item.ng-binding{
   width:200px;
   margin-left: auto;
   margin-right: auto;

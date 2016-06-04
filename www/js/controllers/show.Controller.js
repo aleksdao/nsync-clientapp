@@ -1,14 +1,15 @@
 app.controller('ShowController', function ($scope, $state, ServerSocketFactory, socket, ipAddressFactory) {
-
+  // console.log('Velocity', Velocity);
+  console.log("Tone", Tone);
+  $scope.message = 'Test';
 
   function getPhotoIP(){
       $scope.photoIP = ipAddressFactory.photoAddress();
   }
   getPhotoIP();
 
-  $scope.itemColor;
-  $scope.message = 'default';
-  //connect to socket server
+  $scope.itemColor = 'red';
+
   var serverLatency;
 
   console.log('socket inside ShowController',socket);
