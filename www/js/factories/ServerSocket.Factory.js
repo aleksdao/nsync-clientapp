@@ -34,7 +34,6 @@ app.factory('socket', function(ipAddressFactory){
       return ipAddressFactory.socketAddress()
       .then(function(response){
         _socket = io.connect('http://' + response.data.socketIP + serverUrl);
-        console.log(_socket, response.data.socketIP);
         self.ping(); //get the inital roundtrip time just in case it doesn't get called later on
         return this;
       });

@@ -10,9 +10,6 @@ app.controller('ShowController', function ($scope, $state, socket, ipAddressFact
 
   $scope.itemColor = 'red';
 
-  var serverLatency;
-  console.log(socket);
-  socket.emit('add user', {name: 'Cool Bro Mobile 7000'});
   socket.ping();
 //
 //
