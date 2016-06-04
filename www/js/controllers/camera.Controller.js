@@ -1,8 +1,8 @@
-app.controller('cameraController', function($scope, $cordovaCamera, imageFactory ) {
+app.controller('cameraController', function($scope, $cordovaCamera, imageFactory, photoIP) {
 
 
   $scope.UploadImage = function() {
-    imageFactory.postPhoto($scope.srcImage)
+    imageFactory.postPhoto($scope.srcImage, photoIP)
     .then(function(result) {
       // Success!
       console.log('file uploaded in controller');

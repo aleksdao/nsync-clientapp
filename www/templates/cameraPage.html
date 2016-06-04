@@ -1,27 +1,18 @@
 
 
 
-  <ion-view view-title="Camera Page" id="cameraPage" ng-controller="cameraController">
+  <ion-view view-title="Camera Page" id="cameraPage">
     <ion-pane>
     <ion-content padding="true">
         <img ng-src="{{srcImage || &apos;img/test.jpg&apos;}}" id="srcImage" width="300 " height="400 " style="display: block; margin: 0 auto;"><br>
 
         <button class="button button-full button-positive " ng-click="takeImage() ">Take Image</button><br>
         <button class="button button-full button-positive " ng-click="UploadImage() ">Upload</button><br>
-      
+        <button class="button button-full button-positive " ui-sref="showPage">Back to Show</button><br>
 
 
-        <!-- <div class="list ">
-            <label class="item item-input">
-                <span class="input-label">First Name:</span>
-                <input type="text" name="name" value="John">
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Last Name:</span>
-                <input type="text" name="name" value="Doe">
-            </label>
 
-        </div> -->
+
     </ion-content>
 </ion-pane>
 

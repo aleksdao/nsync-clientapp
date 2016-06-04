@@ -2,13 +2,13 @@ app.factory('imageFactory',function($http, ionicReady, $cordovaFileTransfer, $co
 
 	return{
 
-		postPhoto: function(imageDataIn){
+		postPhoto: function(imageDataIn, photoIP){
 			var imageData = imageDataIn;
 
 			ionicReady().then(function() {
 			  var ft = new FileTransfer();
 
-        var server = 'http://192.168.2.47:5000/api/photo';
+        var server = 'http://' + photoIP +'/api/photo';
 
         var trustAllHosts = true;
 
@@ -35,21 +35,4 @@ app.factory('imageFactory',function($http, ionicReady, $cordovaFileTransfer, $co
 		}//end postPhoto
 
 	};
-})
-
-//this is method that returns a promise that is resolved when the device is ready
-.factory('ionicReady', function($ionicPlatform) {
-  var readyPromise;
-
-  return function () {
-    if (!readyPromise) {
-      readyPromise = $ionicPlatform.ready();
-    }
-    return readyPromise;
-  };
 });
-
-// to use this...
-// ionicReady().then(function() {
-//     // Stuff to do when the platform is finally ready.
-//   });

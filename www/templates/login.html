@@ -1,39 +1,12 @@
-<!-- <ion-view ng-controller="LoginController as logcntrl" class="light">
 
-  <ion-content>
-    hi
-    <div class="list list-inset light top180">
-      <label class="item item-input linegrey">
-        <input type="text" class="linegrey white" placeholder="What is your nickname?" ng-model="lognctrl.nickname">
-      </label>
-      <button class="button button-block button-grey" ng-click="lognctrl.join()">Join</button>
-    </div>
-  </ion-content>
-<ion-view> -->
 
-<ion-view view-title="Login" id="changeColor" ng-controller="LoginController">
+<ion-view view-title="Login">
   <!-- <ion-view view-title="Login" id="changeColor" ng-controller="LoginController" ng-style="{'background-color': itemColor}"> -->
     <ion-content>
           <div >
-              <h1>Boots and Cats</h1>
-              <div class="button button-block button-stable" ui-sref="cameraPage">Go to Camera page</div>
-              <!-- <div class="button button-block button-stable" ng-click="goToMosaic()">Go to Mosaic</div> -->
-              <a class="item" href="#" onclick="window.open('http://www.cnn.com', '_blank', 'location=yes'); return false;">
-                      Open a Browser
-                  </a>
-
-
-              {{ message }}
+            <h2>You are in the login state</h2>
+            <div class="button button-block button-stable" ui-sref="showPage">Login Here</div>
           </div>
     </ion-content>
 
-    <!-- <ion-content>
-  	  <div class="list list-inset light top180">
-  	  	<label class="item item-input linegrey" >
-  	    	<input type="text" class="linegrey white" placeholder="What is your nickname?" ng-model="name.nickname">
-  	  	</label>
-        {{nickname}}
-  	  	<button class="button button-block button-grey" ng-click="join()">Join</button>
-  	  </div>
-    </ion-content> -->
   </ion-view>

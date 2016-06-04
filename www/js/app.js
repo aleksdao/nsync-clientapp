@@ -4,6 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('ionic-socketio-chat-client', ['ionic',  'btford.socket-io', 'ngCordova', 'ngAnimate'])
+// var app = angular.module('ionic-socketio-chat-client', ['ionic', 'ngCordova', 'ngAnimate'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -29,11 +30,28 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic',  'btford.socket
     .state('Login', {
       url: '/login',
       templateUrl: 'templates/login.html',
+      controller: 'LoginController'
     })
     .state('cameraPage', {
       url: '/cameraPage',
       templateUrl: 'templates/cameraPage.html',
+      controller: 'cameraController',
+      resolve:{
+      photoIP : function(ipAddressFactory){
+        console.log('inside camera page state');
+         return ipAddressFactory.photoAddress();
+      }
+    }//end resolve
+    })
+    .state('showPage', {
+      url: '/showPage',
+      templateUrl: 'templates/showPage.html',
+      controller: 'ShowController',
+      resolve:{
+      socket : function(ServerSocketFactory){
+         return ServerSocketFactory.getSocket();
+      }
+    }//end resolve
     });
-
   $urlRouterProvider.otherwise('/login');
 });
