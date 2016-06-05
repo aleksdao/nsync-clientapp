@@ -90,8 +90,8 @@ app.factory('SequenceHandler', function($http, socket){
       Tone.Transport.start("+" + startTime); //start Transport
     },
     stop: function(){
+      Tone.Transport.stop();
       Tone.Transport.position = 0;
-      return Tone.Transport.stop();
     },
     eventLoop: function(){
       //grab current time code position
@@ -99,8 +99,9 @@ app.factory('SequenceHandler', function($http, socket){
 
       //check to see if the show is over, if so, stop Transport
       if (currPos == _sequence.getShowLength()){
+        Tone.Transport.stop();
         Tone.Transport.position = 0;
-        return Tone.Transport.stop();
+        return;
       }
 
       //play current events
