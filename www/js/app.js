@@ -28,6 +28,7 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic',  'btford.socket
     .then(function(){
       //connect to client socket
       socket.connect(ipAddressFactory.getSocketIP(), '/client');
+      socket.startPingRepeat(1000);
     });
 
   });

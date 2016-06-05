@@ -21,14 +21,10 @@ app.factory('SequenceHandler', function($http, socket){
     setTransitionTime(0);
     _screenElement.container.css("background-color", params.color);
 
-
-    console.log('changeColor');
-
   }
   function fadeColor(params, duration){
     setTransitionTime(transitionTime);
     _screenElement.container.css("background-color", params.color);
-    console.log('fadeColor');
 
   }
   function changeText(params){
@@ -36,41 +32,38 @@ app.factory('SequenceHandler', function($http, socket){
     if(params.color){
       _screenElement[params.target].css("color", params.color);
     }
-    console.log('changetext', params);
 
   }
   function vibrate(params){
-    console.log('vibrate');
 
   }
   function strobeFlash(params, duration){
-    console.log('strobe');
 
   }
   // sets CSS transiton time
   function setTransitionTime (timeMs){
-    console.log('transitionTime', timeMs);
-    var transSet = {
-      'transition-property': 'background-color',
-      'transition-duration': timeMs + 'ms',
-      'transition-timing-function': 'ease-in'
-    };
-    _screenElement.container.css(transSet);
+    _screenElement.container.css({'transition-duration': timeMs + 'ms'});
   }
 
   return {
     init: function(screenElement){
-      // _screenElement.body = angular.element(document).find(screenElement.body);
       _screenElement.container = angular.element(document.querySelector(screenElement.container));
       _screenElement.title = angular.element(document.querySelector(screenElement.title));
       _screenElement.body = angular.element(document.querySelector(screenElement.body));
-
-
-
     },
     loadSequence: function(sequence){
       _sequence = new Sequence(sequence);
+
+      //calculate transition time for FX
       transitionTime = (bpmScale[_sequence.getSettings().resolution] / _sequence.getSettings().bpm)*1000;
+
+      //set our css transition on container
+      var transSet = {
+        'transition-property': 'background-color',
+        'transition-timing-function': 'ease-in'
+      };
+      _screenElement.container.css(transSet);
+
       //set Transport settings
       Tone.Transport.set(_sequence.getSettings());
       Tone.Transport.scheduleRepeat(this.eventLoop, _sequence.getSettings().resolution, 0);
@@ -129,6 +122,8 @@ app.factory('SequenceHandler', function($http, socket){
     }
   };
 });//end factory
+
+//bpm time LUT
 var bpmScale = {
   '4n': 60,
   '8n': 30,
