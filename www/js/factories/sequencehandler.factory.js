@@ -17,7 +17,8 @@ app.factory('SequenceHandler', function($http, socket){
 
   return {
     init: function(screenElement){
-      _screenElement = screenElement;
+      // _screenElement.body = angular.element(document).find(screenElement.body);
+      _screenElement.body = angular.element(document.querySelector(screenElement.body));
     },
     loadSequence: function(sequence){
       _sequence = new Sequence(sequence);
@@ -56,6 +57,8 @@ app.factory('SequenceHandler', function($http, socket){
       var currPos = Tone.Transport.position;
 
       console.log(currPos);
+      _screenElement.body.text(currPos);
+
       //check to see if the show is over, if so, stop Transport
       if (currPos == _sequence.getShowLength()){
         Tone.Transport.position = 0;
