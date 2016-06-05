@@ -21,7 +21,7 @@ return tools;
 
 });
 
-app.factory('socket', function(ipAddressFactory){
+app.factory('socket', function($rootScope, ipAddressFactory){
 
   var _socket; //holds our Socket
   var _serverLatency; //current roundtrip time to server
@@ -60,7 +60,7 @@ app.factory('socket', function(ipAddressFactory){
       });
     },
     startPingRepeat: function(interval){
-      interval = interval || 10000; //if no interval is passed, set to 10 seconds
+      interval = interval || 2000; //if no interval is passed, set to 10 seconds
 
       if(!_pingProcess)
         _pingProcess = setInterval(this.ping, interval);
