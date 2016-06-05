@@ -21,35 +21,35 @@ app.factory('SequenceHandler', function($http, socket){
     setTransitionTime(0);
     _screenElement.container.css("background-color", params.color);
 
-
-    console.log('changeColor');
-
   }
+
   function fadeColor(params, duration){
     setTransitionTime(transitionTime);
     _screenElement.container.css("background-color", params.color);
-    console.log('fadeColor');
-
   }
+
   function changeText(params){
     _screenElement[params.target].text(params.text);
     if(params.color){
       _screenElement[params.target].css("color", params.color);
     }
-    console.log('changetext', params);
-
   }
+
   function vibrate(params){
-    console.log('vibrate');
-
+    navigator.vibrate(750);
   }
-  function strobeFlash(params, duration){
-    console.log('strobe');
 
+  function strobeFlash(params){
+    // turn flash on
+    window.plugins.flashlight.switchOn();
+    // turn flash off
+    setTimeout(function() {
+      window.plugins.flashlight.switchOff();
+    }, transitionTime);
   }
+
   // sets CSS transiton time
   function setTransitionTime (timeMs){
-    console.log('transitionTime', timeMs);
     var transSet = {
       'transition-property': 'background-color',
       'transition-duration': timeMs + 'ms',
@@ -60,14 +60,11 @@ app.factory('SequenceHandler', function($http, socket){
 
   return {
     init: function(screenElement){
-      // _screenElement.body = angular.element(document).find(screenElement.body);
       _screenElement.container = angular.element(document.querySelector(screenElement.container));
       _screenElement.title = angular.element(document.querySelector(screenElement.title));
       _screenElement.body = angular.element(document.querySelector(screenElement.body));
-
-
-
     },
+
     loadSequence: function(sequence){
       _sequence = new Sequence(sequence);
       transitionTime = (bpmScale[_sequence.getSettings().resolution] / _sequence.getSettings().bpm)*1000;
@@ -75,15 +72,18 @@ app.factory('SequenceHandler', function($http, socket){
       Tone.Transport.set(_sequence.getSettings());
       Tone.Transport.scheduleRepeat(this.eventLoop, _sequence.getSettings().resolution, 0);
     },
+
     fetchShow: function(){
       return $http.get('http://jaj-showeditor.herokuapp.com/api/shows')
       .then(function(response){
         return response.data[0];
       });
     },
+
     getTransportState: function(){
       return Tone.Transport.state;
     },
+
     queueStart: function(preRoll, adjustForLatency){
       var startTime;
 
@@ -96,17 +96,15 @@ app.factory('SequenceHandler', function($http, socket){
 
       Tone.Transport.start("+" + startTime); //start Transport
     },
+
     stop: function(){
       Tone.Transport.position = 0;
       return Tone.Transport.stop();
     },
+
     eventLoop: function(){
       //grab current time code position
       var currPos = Tone.Transport.position;
-
-      // console.log(currPos);
-      // _screenElement.body.text(currPos);
-
       //check to see if the show is over, if so, stop Transport
       if (currPos == _sequence.getShowLength()){
         Tone.Transport.position = 0;
@@ -124,11 +122,8 @@ app.factory('SequenceHandler', function($http, socket){
       //check for preloaded events
       _sequence.timeline.forEachAtTime(currPos + "+" + _sequence.getSettings().resolution, function(event) {
         if (event.preload) {
-
         }
-
       });
-
     }
   };
 });//end factory

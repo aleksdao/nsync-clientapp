@@ -1,8 +1,5 @@
 app.controller('ShowController', function ($scope, $state, socket, SequenceHandler) {
-  // console.log('Velocity', Velocity);
-
   $scope.message = 'Test';
-
 
 
   SequenceHandler.init({
