@@ -29,14 +29,9 @@ app.factory('socket', function(ipAddressFactory){
 
   return {
 
-    connect: function(serverUrl){
-      var self = this;
-      return ipAddressFactory.socketAddress()
-      .then(function(response){
-        _socket = io.connect('http://' + response.data.socketIP + serverUrl);
-        self.ping(); //get the inital roundtrip time just in case it doesn't get called later on
-        return this;
-      });
+    connect: function(serverUrl, namespace){
+      _socket = io.connect(serverUrl + namespace);
+      this.ping(); //get the inital roundtrip time just in case it doesn't get called later on
     },
     on: function (eventName, callback) {
       _socket.on(eventName, function () {

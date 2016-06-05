@@ -6,7 +6,7 @@
 var app = angular.module('ionic-socketio-chat-client', ['ionic',  'btford.socket-io', 'ngCordova', 'ngAnimate'])
 // var app = angular.module('ionic-socketio-chat-client', ['ionic', 'ngCordova', 'ngAnimate'])
 
-.run(function($ionicPlatform, socket) {
+.run(function($ionicPlatform, ipAddressFactory, socket) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -23,8 +23,13 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic',  'btford.socket
       StatusBar.styleDefault();
     }
 
-    /// init admin socket connection ///
-    socket.connect('/client');
+    /// init server connection ///
+    ipAddressFactory.fetchIpAddresses()
+    .then(function(){
+      //connect to client socket
+      socket.connect(ipAddressFactory.getSocketIP(), '/client');
+
+    });
 
   });
 })

@@ -1,23 +1,22 @@
 app.factory('ipAddressFactory', function ($http) {
-  var socketIP = '';
-  var photoIP = '';
+  var socketIP;
+  var photoIP;
 
+  return {
 
-  var tools = {
-  socketAddress : function()  {
-    return $http.get('https://nsync-dns.herokuapp.com/')
-    .then(function(addresses){
-      photoIP = addresses.data.photoIP;
-      return addresses;
-    });
-
-  },
-  photoAddress : function()  {
-    return photoIP;
-  }
-
-  };//end tools
-
-  return tools;
-
+    fetchIpAddresses: function()  {
+      return $http.get('https://nsync-dns.herokuapp.com/')
+      .then(function(response){
+        photoIP = 'http://' + response.data.photoIP;
+        socketIP = 'http://' + response.data.socketIP;
+        return response;
+      });
+    },
+    getPhotoIP: function()  {
+      return photoIP;
+    },
+    getSocketIP: function(){
+      return socketIP;
+    }
+  };
 });
