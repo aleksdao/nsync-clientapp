@@ -56,7 +56,6 @@ app.factory('SequenceHandler', function($http, socket){
       //grab current time code position
       var currPos = Tone.Transport.position;
 
-      console.log(currPos);
       _screenElement.body.text(currPos);
 
       //check to see if the show is over, if so, stop Transport

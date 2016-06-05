@@ -16,7 +16,7 @@ app.controller('ShowController', function ($scope, $state, socket, SequenceHandl
   //var poo = angular.element(document.querySelector('#showText'));
   socket.on('play',function(data){
     SequenceHandler.loadSequence(data.sequence);
-    console.log(socket.getLatency())
+    //console.log(socket.getLatency())
     if(SequenceHandler.getTransportState() === 'stopped'){
       //play the sequence
       SequenceHandler.queueStart(data.startTime, true);
