@@ -115,7 +115,6 @@ a.item.ng-binding{
   margin-right: auto;
 }
 
-/*#showPage {
-    background-color: #FFF;
-    transition: background-color .3s ease-in;
-}*/
+#cameraButton{
+  margin-top: 75px;
+}
