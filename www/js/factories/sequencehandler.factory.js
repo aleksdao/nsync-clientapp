@@ -18,12 +18,12 @@ app.factory('SequenceHandler', function($http, socket){
 
   /////// Event Action Functions //////
   function changeColor(params){
-    setTransitionTime(0);
+    //setTransitionTime(0);
     _screenElement.container.css("background-color", params.color);
 
   }
   function fadeColor(params, duration){
-    setTransitionTime(transitionTime);
+    //setTransitionTime(transitionTime);
     _screenElement.container.css("background-color", params.color);
 
   }
