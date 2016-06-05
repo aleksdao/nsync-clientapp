@@ -1,43 +1,9 @@
-app.controller('LoginController', function ($scope, $state, $sanitize, ServerSocketFactory, $rootScope) {
+app.controller('LoginController', function ($scope, $state, socket) {
 
-  var show;
-  var prevColor;
+$scope.logIn = function(){
 
-  function runEvent(time) {
+  socket.emit('add user', {name: 'Cool Bro Mobile 700fff0'});
+  $state.go('showPage');
 
-        //grab current time code position
-        var currPos = Tone.Transport.position;
-
-        //check to see if the show is over, if so, stop Transport
-        if (currPos === show.length) {
-            Tone.Transport.position = 0;
-            return Tone.Transport.stop();
-        }
-
-        var body = document.getElementById('changeColor1');
-        // var ionView = document.getElementById('changeColor1');
-
-        if (show[currPos]) //if there is an event at this time, change the DOM
-          {
-            // if (prevColor)
-            //   $scope.viewColor = prevColor;
-            body.style.backgroundColor = show[currPos].changeColor;
-            // prevColor = show[currPos].changeColor;
-          }
-
-    }
-
-  Tone.Transport.set({
-      bpm: 60
-  });
-
-  ServerSocketFactory.on('play', function (data) {
-    console.log('play');
-    show = data.show; //get the show script
-    Tone.Transport.start(); //start Transport
-  });
-
-  Tone.Transport.scheduleRepeat(runEvent, "4n", 0);
-
-
-})
+};
+});

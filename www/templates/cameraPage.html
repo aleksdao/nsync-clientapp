@@ -1,0 +1,19 @@
+
+
+
+  <ion-view view-title="Camera Page" id="cameraPage">
+    <ion-pane>
+    <ion-content padding="true">
+        <img ng-src="{{srcImage || &apos;img/test.jpg&apos;}}" id="srcImage" width="300 " height="400 " style="display: block; margin: 0 auto;"><br>
+
+        <button class="button button-full button-positive " ng-click="takeImage() ">Take Image</button><br>
+        <button class="button button-full button-positive " ng-click="UploadImage() ">Upload</button><br>
+        <button class="button button-full button-positive " ui-sref="showPage">Back to Show</button><br>
+
+
+
+
+    </ion-content>
+</ion-pane>
+
+  </ion-view>
