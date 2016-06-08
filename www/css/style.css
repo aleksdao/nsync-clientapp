@@ -114,3 +114,7 @@ a.item.ng-binding{
   margin-left: auto;
   margin-right: auto;
 }
+
+#cameraButton{
+  margin-top: 75px;
+}

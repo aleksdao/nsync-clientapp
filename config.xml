@@ -75,4 +75,5 @@
     <plugin name="cordova-plugin-file-transfer" spec="~1.5.1" />
     <plugin name="cordova-plugin-x-toast" spec="https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git" />
     <plugin name="cordova-plugin-vibration" spec="~2.1.1" />
+    <plugin name="cordova-plugin-flashlight" spec="https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin.git" />
 </widget>
