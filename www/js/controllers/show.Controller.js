@@ -13,6 +13,7 @@ app.controller('ShowController', function ($scope, $state, socket, SequenceHandl
 
   socket.on('play',function(data){
     SequenceHandler.loadSequence(data.sequence);
+    $scope.message = data.sequence.settings.bpm;
 
     if(SequenceHandler.getTransportState() === 'stopped'){
       //play the sequence
