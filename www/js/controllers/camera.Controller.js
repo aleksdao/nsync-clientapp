@@ -1,6 +1,7 @@
 app.controller('cameraController', function($scope, $cordovaCamera, imageFactory, ipAddressFactory) {
 
   var photoIP = ipAddressFactory.getPhotoIP();
+  console.log('photoIP', photoIP);
 
   $scope.UploadImage = function() {
     imageFactory.postPhoto($scope.srcImage, photoIP)
@@ -22,8 +23,8 @@ app.controller('cameraController', function($scope, $cordovaCamera, imageFactory
             sourceType: Camera.PictureSourceType.CAMERA,
             allowEdit: false,
             encodingType: Camera.EncodingType.JPEG,
-            targetWidth: 1944,
-            targetHeight: 2592,
+            targetWidth: 800,
+            targetHeight: 800,
             popoverOptions: CameraPopoverOptions,
             saveToPhotoAlbum: false
         };

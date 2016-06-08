@@ -22,11 +22,13 @@ app.factory('SequenceHandler', function($http, socket){
     _screenElement.container.css("background-color", params.color);
 
   }
+
   function fadeColor(params, duration){
     //setTransitionTime(transitionTime);
     _screenElement.container.css("background-color", params.color);
 
   }
+
   function changeText(params){
     _screenElement[params.target].text(params.text);
     if(params.color){
@@ -34,15 +36,26 @@ app.factory('SequenceHandler', function($http, socket){
     }
 
   }
+
+
   function vibrate(params){
-
+    navigator.vibrate(750);
   }
-  function strobeFlash(params, duration){
 
+
+  function strobeFlash(params){
+    // turn flash on
+    window.plugins.flashlight.switchOn();
+    // turn flash off
+    setTimeout(function() {
+      window.plugins.flashlight.switchOff();
+    }, transitionTime);
   }
+
   // sets CSS transiton time
   function setTransitionTime (timeMs){
     _screenElement.container.css({'transition-duration': timeMs + 'ms'});
+
   }
 
   return {
@@ -51,6 +64,7 @@ app.factory('SequenceHandler', function($http, socket){
       _screenElement.title = angular.element(document.querySelector(screenElement.title));
       _screenElement.body = angular.element(document.querySelector(screenElement.body));
     },
+
     loadSequence: function(sequence){
       _sequence = new Sequence(sequence);
 
@@ -68,15 +82,18 @@ app.factory('SequenceHandler', function($http, socket){
       Tone.Transport.set(_sequence.getSettings());
       Tone.Transport.scheduleRepeat(this.eventLoop, _sequence.getSettings().resolution, 0);
     },
+
     fetchShow: function(){
       return $http.get('http://jaj-showeditor.herokuapp.com/api/shows')
       .then(function(response){
         return response.data[0];
       });
     },
+
     getTransportState: function(){
       return Tone.Transport.state;
     },
+
     queueStart: function(preRoll, adjustForLatency){
       var startTime;
 
@@ -89,10 +106,12 @@ app.factory('SequenceHandler', function($http, socket){
 
       Tone.Transport.start("+" + startTime); //start Transport
     },
+
     stop: function(){
       Tone.Transport.stop();
       Tone.Transport.position = 0;
     },
+
     eventLoop: function(){
       //grab current time code position
       var currPos = Tone.Transport.position;
@@ -115,11 +134,8 @@ app.factory('SequenceHandler', function($http, socket){
       //check for preloaded events
       _sequence.timeline.forEachAtTime(currPos + "+" + _sequence.getSettings().resolution, function(event) {
         if (event.preload) {
-
         }
-
       });
-
     }
   };
 });//end factory
