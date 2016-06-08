@@ -114,3 +114,8 @@ a.item.ng-binding{
   margin-left: auto;
   margin-right: auto;
 }
+
+/*#showPage {
+    background-color: #FFF;
+    transition: background-color .3s ease-in;
+}*/
