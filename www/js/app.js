@@ -43,23 +43,12 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic',  'btford.socket
     .state('cameraPage', {
       url: '/cameraPage',
       templateUrl: 'templates/cameraPage.html',
-      controller: 'cameraController',
-      resolve:{
-      photoIP : function(ipAddressFactory){
-        console.log('inside camera page state');
-         return ipAddressFactory.photoAddress();
-      }
-    }//end resolve
+      controller: 'cameraController'
     })
     .state('showPage', {
       url: '/showPage',
       templateUrl: 'templates/showPage.html',
-      controller: 'ShowController',
-      resolve:{
-      // clientSocket : function(socket){
-      //    return socket.connect('/client');
-      // }
-    }//end resolve
+      controller: 'ShowController'
     });
   $urlRouterProvider.otherwise('/login');
 });
