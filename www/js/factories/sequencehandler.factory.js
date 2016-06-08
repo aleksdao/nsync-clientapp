@@ -10,7 +10,7 @@ app.factory('SequenceHandler', function($http, socket){
 
   var _actionFunc = {
     changeColor: changeColor,
-    fadeColor: fadeColor,
+    fadeColorTo: fadeColorTo,
     changeText: changeText,
     vibrate: vibrate,
     strobeFlash: strobeFlash
@@ -18,13 +18,13 @@ app.factory('SequenceHandler', function($http, socket){
 
   /////// Event Action Functions //////
   function changeColor(params){
-    //setTransitionTime(0);
+    setTransitionTime(0);
     _screenElement.container.css("background-color", params.color);
 
   }
 
-  function fadeColor(params, duration){
-    //setTransitionTime(transitionTime);
+  function fadeColorTo(params, duration){
+    setTransitionTime(transitionTime);
     _screenElement.container.css("background-color", params.color);
 
   }
@@ -66,7 +66,16 @@ app.factory('SequenceHandler', function($http, socket){
     },
 
     loadSequence: function(sequence){
+
+      //set Transport settings
+      Tone.Transport.set(sequence.settings);
+
+      //load in the sequence
       _sequence = new Sequence(sequence);
+
+      //set event loop
+      Tone.Transport.scheduleRepeat(this.eventLoop, _sequence.getSettings().resolution, 0);
+
 
       //calculate transition time for FX
       transitionTime = (bpmScale[_sequence.getSettings().resolution] / _sequence.getSettings().bpm)*1000;
@@ -77,10 +86,6 @@ app.factory('SequenceHandler', function($http, socket){
         'transition-timing-function': 'ease-in'
       };
       _screenElement.container.css(transSet);
-
-      //set Transport settings
-      Tone.Transport.set(_sequence.getSettings());
-      Tone.Transport.scheduleRepeat(this.eventLoop, _sequence.getSettings().resolution, 0);
     },
 
     fetchShow: function(){
@@ -134,6 +139,7 @@ app.factory('SequenceHandler', function($http, socket){
       //check for preloaded events
       _sequence.timeline.forEachAtTime(currPos + "+" + _sequence.getSettings().resolution, function(event) {
         if (event.preload) {
+          _actionFunc[event.action](event.params, transitionTime);
         }
       });
     }
