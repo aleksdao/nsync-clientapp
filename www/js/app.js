@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('ionic-socketio-chat-client', ['ionic','ngCordova', 'ngAnimate'])
+var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material','ngCordova', 'ngAnimate','ionMdInput'])
 // var app = angular.module('ionic-socketio-chat-client', ['ionic', 'ngCordova', 'ngAnimate'])
 
 .run(function($ionicPlatform, ipAddressFactory, socket) {
@@ -27,7 +27,7 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ngCordova', 'ng
     ipAddressFactory.fetchIpAddresses()
     .then(function(){
       //connect to client socket
-      socket.connect(ipAddressFactory.getSocketIP(), '/client');
+      socket.connect('http://192.168.1.120:3000', '/client');
       socket.startPingRepeat(200);
     });
 
