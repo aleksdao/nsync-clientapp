@@ -19,9 +19,12 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
       // a much nicer keyboard experience.
       cordova.plugins.Keyboard.disableScroll(true);
     }
+    ionic.Platform.fullScreen();
+
     if(window.StatusBar) {
-      StatusBar.styleDefault();
+      StatusBar.hide();
     }
+
 
     /// init server connection ///
     ipAddressFactory.fetchIpAddresses()
@@ -38,6 +41,7 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
   $stateProvider
     .state('Login', {
       url: '/login',
+
       templateUrl: 'templates/login.html',
       controller: 'LoginController'
     })

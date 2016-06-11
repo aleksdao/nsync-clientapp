@@ -1,6 +1,7 @@
 app.controller('cameraController', function($scope, $cordovaCamera, imageFactory, ipAddressFactory) {
 
   var photoIP = ipAddressFactory.getPhotoIP();
+
   console.log('photoIP', photoIP);
 
   $scope.UploadImage = function() {
