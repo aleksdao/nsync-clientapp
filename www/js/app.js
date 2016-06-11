@@ -50,6 +50,11 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
       url: '/showPage',
       templateUrl: 'templates/showPage.html',
       controller: 'ShowController'
+    })
+    .state('stagingPage', {
+      url: '/stagingPage',
+      templateUrl: 'templates/stagingPage.html',
+      controller: 'StagingController'
     });
   $urlRouterProvider.otherwise('/login');
 });

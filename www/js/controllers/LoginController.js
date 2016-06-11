@@ -6,7 +6,7 @@ app.controller('LoginController', function ($scope, $state, socket) {
 
 
     socket.emit('add user', { name: $scope.data.name });
-    $state.go('showPage');
+    $state.go('stagingPage');
 
   };
 });

@@ -124,3 +124,20 @@ a.item.ng-binding{
   width: 90%;
   border-style: none;
 }
+#stagingPage{
+  background-color: #010101;
+  text-align: center;
+  color: #46d4a9;
+}
+#showPage {
+  background-color: #0f0f0f;
+  text-align: center;
+}
+
+#showTitle {
+  padding-top: 100px;
+}
+
+#showBody {
+  margin-top: 90px;
+}
