@@ -30,7 +30,7 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
     ipAddressFactory.fetchIpAddresses()
     .then(function(){
       //connect to client socket
-      socket.connect('http://192.168.1.120:3000', '/client');
+      socket.connect(ipAddressFactory.getSocketIP(), '/client');
       socket.startPingRepeat(200);
     });
 
