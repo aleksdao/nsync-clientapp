@@ -1,6 +1,5 @@
 app.controller('ShowController', function ($scope, $state, socket, SequenceHandler) {
 
-
   SequenceHandler.init({
       container: '#showPage',
       title:  '#showTitle',
