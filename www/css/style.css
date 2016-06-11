@@ -118,3 +118,9 @@ a.item.ng-binding{
 #cameraButton{
   margin-top: 75px;
 }
+
+.input-width {
+  margin: 0 auto;
+  width: 90%;
+  border-style: none;
+}

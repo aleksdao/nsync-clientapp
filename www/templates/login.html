@@ -1,16 +1,17 @@
 
 
 <ion-view>
-    <ion-content style="background: url(img/samplebg.gif) center; background-size: cover;">
-
-      <div class="list">
-          <ion-md-input placeholder="Username" highlight-color="balanced" type="text"></ion-md-input>
+    <ion-content style="background: url(/img/samplebg.gif) center; background-size: cover;">
+      <div class="hero no-header flat">
+          <div class="content">
+              <h1>Pulse</h1>
+          </div>
       </div>
+      <ion-md-input class="input-width" ng-model="data.name" placeholder="Your Name" highlight-color="energized" type="text"></ion-md-input>
+
       <div class="padding">
-          <button class="button button-full button-balanced ink" ng-click="logIn()">Login</button>
+          <button class="button button-full button-assertive ink" ng-click="logIn()" ng-disabled="!data.name">Enter</button>
       </div>
-
-
 
     </ion-content>
 
