@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('ionic-socketio-chat-client', ['ionic','ngCordova', 'ngAnimate'])
+var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material','ngCordova', 'ngAnimate','ionMdInput'])
 // var app = angular.module('ionic-socketio-chat-client', ['ionic', 'ngCordova', 'ngAnimate'])
 
 .run(function($ionicPlatform, ipAddressFactory, socket) {
@@ -19,9 +19,12 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ngCordova', 'ng
       // a much nicer keyboard experience.
       cordova.plugins.Keyboard.disableScroll(true);
     }
+    ionic.Platform.fullScreen();
+
     if(window.StatusBar) {
-      StatusBar.styleDefault();
+      StatusBar.hide();
     }
+
 
     /// init server connection ///
     ipAddressFactory.fetchIpAddresses()
@@ -38,6 +41,7 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ngCordova', 'ng
   $stateProvider
     .state('Login', {
       url: '/login',
+
       templateUrl: 'templates/login.html',
       controller: 'LoginController'
     })
@@ -50,6 +54,11 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ngCordova', 'ng
       url: '/showPage',
       templateUrl: 'templates/showPage.html',
       controller: 'ShowController'
+    })
+    .state('stagingPage', {
+      url: '/stagingPage',
+      templateUrl: 'templates/stagingPage.html',
+      controller: 'StagingController'
     });
   $urlRouterProvider.otherwise('/login');
 });

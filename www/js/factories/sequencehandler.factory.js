@@ -1,4 +1,4 @@
-app.factory('SequenceHandler', function($http, socket){
+app.factory('SequenceHandler', function($http, $state, $timeout, socket){
 
   var transitionTime;
   var _sequence;
@@ -125,6 +125,11 @@ app.factory('SequenceHandler', function($http, socket){
       if (currPos == _sequence.getShowLength()){
         Tone.Transport.stop();
         Tone.Transport.position = 0;
+
+        //go back to stagingPage
+        $timeout(function(){
+          $state.go('stagingPage');
+        }, 2000);
         return;
       }
 
