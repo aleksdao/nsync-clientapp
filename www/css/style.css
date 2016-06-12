@@ -133,6 +133,18 @@ a.item.ng-binding{
   background-color: #010101;
   text-align: center;
 }
+#cameraPage{
+  background-color: #010101;
+  text-align: center;
+  color: white;
+  background: url('../img/concert.jpg') center;
+
+}
+
+#cameraPage h3{
+  color: white;
+
+}
 
 #showTitle {
   padding-top: 100px;
