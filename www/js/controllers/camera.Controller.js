@@ -39,6 +39,4 @@ app.controller('cameraController', function($scope, $cordovaCamera, $state, imag
         });
     };//end takeImage
 
-
-
 });//endcontroller
