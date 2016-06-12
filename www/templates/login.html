@@ -1,13 +1,14 @@
 
 
 <ion-view>
-    <ion-content style="background: url(/img/samplebg.gif) center; background-size: cover;">
+    <ion-content id="loginPage">
       <div class="hero no-header flat">
           <div class="content">
               <h1>Pulse</h1>
           </div>
       </div>
       <ion-md-input class="input-width" ng-model="data.name" placeholder="Your Name" highlight-color="energized" type="text"></ion-md-input>
+      <i class="icon ion-heart"></i>
 
       <div class="padding">
           <button class="button button-full button-assertive ink" ng-click="logIn()" ng-disabled="!data.name">Enter</button>

@@ -27,10 +27,12 @@ app.controller('cameraController', function($scope, $cordovaCamera, imageFactory
             targetWidth: 800,
             targetHeight: 800,
             popoverOptions: CameraPopoverOptions,
-            saveToPhotoAlbum: false
+            saveToPhotoAlbum: false,
+            cameraDirection: 'FRONT'
         };
 
-        $cordovaCamera.getPicture(options).then(function(imageData) {
+        $cordovaCamera.getPicture(options)
+        .then(function(imageData) {
             $scope.srcImage = "data:image/jpeg;base64," + imageData;
         }, function(err) {
             // error

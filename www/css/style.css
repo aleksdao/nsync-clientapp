@@ -130,7 +130,7 @@ a.item.ng-binding{
   color: #46d4a9;
 }
 #showPage {
-  background-color: #0f0f0f;
+  background-color: #010101;
   text-align: center;
 }
 
@@ -140,4 +140,9 @@ a.item.ng-binding{
 
 #showBody {
   margin-top: 90px;
+}
+
+#loginPage {
+  background: url('../img/samplebg.gif') center;
+  background-size: cover;
 }
