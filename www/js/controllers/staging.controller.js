@@ -12,8 +12,10 @@ app.controller('StagingController', function ($scope, $state, socket, SequenceHa
     $state.go('showPage');
   });
 
-  socket.on('get photo', function(){
-    $state.go('cameraPage');
+  socket.on('get photo', function(data){
+    console.log('get photo data', data);
+    $state.go('cameraPage',data);
+    //pass the photo type data as a paramater to the cameraPage state, changing the words based on the event, 1 for front facing, 0 for selfie
   });
 
   socket.on('send message', function(data){
@@ -24,7 +26,7 @@ app.controller('StagingController', function ($scope, $state, socket, SequenceHa
         duration: data.duration, // 2000 ms
         position: "center",
         styling: {
-            textSize: 20 // Default is approx. 13.
+            textSize: 30 // Default is approx. 13.
             }
       });
 

@@ -24,8 +24,6 @@ app.factory('imageFactory',function($http, ionicReady, $cordovaFileTransfer, $co
               .then(function(result) {
 								console.log('success in here dude: ' + angular.toJson(result));
 								navigator.vibrate(750);
-								// $cordovaToast
-								// .showLongTop('Photo Sent!');
 								window.plugins.toast.showWithOptions({
 									message: "Photo Sent!",
 									duration: "Long", // 2000 ms

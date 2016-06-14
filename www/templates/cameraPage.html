@@ -3,7 +3,8 @@
 
   <ion-view view-title="Camera Page" id="cameraPage">
     <ion-content padding="true">
-        <h3> Want to take a selfie? </h3>
+        <h3 ng-if="photoType  == 1"> Want to take a selfie? </h3>
+        <h3 ng-if="photoType  == 0"> Want to take an event photo? </h3>
         <button class="button button-full button-balanced " ng-click="takeImage() ">Yes!</button><br>
         <button class="button button-full button-dark " ui-sref="stagingPage">Not Now...</button><br>
     </ion-content>
