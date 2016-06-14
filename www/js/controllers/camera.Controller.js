@@ -1,5 +1,6 @@
-app.controller('cameraController', function($scope, $cordovaCamera, $state, imageFactory, ipAddressFactory) {
-
+app.controller('cameraController', function($scope, $cordovaCamera, $state, imageFactory, ipAddressFactory, photoType) {
+  console.log('photoType in controller', photoType);
+  $scope.photoType = photoType;
   var photoIP = ipAddressFactory.getPhotoIP();
 
   $scope.UploadImage = function() {
@@ -19,21 +20,28 @@ app.controller('cameraController', function($scope, $cordovaCamera, $state, imag
         var options = {
             quality: 80,
             destinationType: Camera.DestinationType.DATA_URL,
+            // FILE_URI
             sourceType: Camera.PictureSourceType.CAMERA,
-            allowEdit: false,
+            // allowEdit: true,
+            correctOrientation: true,
             encodingType: Camera.EncodingType.JPEG,
             targetWidth: 800,
-            targetHeight: 800,
-            popoverOptions: CameraPopoverOptions,
+            // targetHeight: 800,
+            // popoverOptions: CameraPopoverOptions,
             saveToPhotoAlbum: false,
-            cameraDirection: 'FRONT'
+            // selfie
+            // cameraDirection: 1
+            // front facing
+            cameraDirection: photoType
+
         };
 
         $cordovaCamera.getPicture(options)
         .then(function(imageData) {
             $scope.srcImage = "data:image/jpeg;base64," + imageData;
             $scope.UploadImage();
-            $state.go('stagingPage');
+            //move this $state.go into callback inside  imageFactory
+            // $state.go('stagingPage');
         }, function(err) {
             // error
         });

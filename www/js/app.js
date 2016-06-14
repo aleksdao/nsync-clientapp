@@ -48,8 +48,16 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
     .state('cameraPage', {
       url: '/cameraPage',
       templateUrl: 'templates/cameraPage.html',
-      controller: 'cameraController'
-    })
+      controller: 'cameraController',
+      params: {
+      photoType: 0
+    },
+    resolve: {
+      photoType:	function($stateParams){
+        return	$stateParams.photoType;
+      }//end photoType
+    }//end resolve
+  })
     .state('showPage', {
       url: '/showPage',
       templateUrl: 'templates/showPage.html',
