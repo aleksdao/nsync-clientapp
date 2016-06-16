@@ -1,25 +1,15 @@
-Ionic App Base
-=====================
+Setting up hockeyapp for ios/mac client integration
+https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/how-to-upload-to-hockeyapp-from-mac-os-x
+in xcode use build and archive, which launches upload helper
 
-A starting project for Ionic that optionally supports using custom SCSS.
+Prepping for Android Build
+https://github.com/hughred22/YouTube-Video-Listing-Ionic-Mobile-App/wiki/Preparing-for-Release-and-Publishing-Your-Ionic-App
+http://ionicframework.com/docs/guide/publishing.html
 
-## Using this project
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore /Users/jrhill/fullstack/nsync-clientapp/platforms/android
+/build/outputs/apk/android-debug-unaligned.apk together.apk
 
-We recommend using the [Ionic CLI](https://github.com/driftyco/ionic-cli) to create new Ionic projects that are based on this project but use a ready-made starter template.
+Setting up ionic auto signing of Android apps
+https://baxeico.wordpress.com/2015/05/20/how-to-automatically-sign-your-android-apk-using-ionic-framework-and-crosswalk/
 
-For example, to start a new Ionic project with the default tabs interface, make sure the `ionic` utility is installed:
-
-```bash
-$ npm install -g ionic
-```
-
-Then run: 
-
-```bash
-$ ionic start myProject tabs
-```
-
-More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/getting-started) page and the [Ionic CLI](https://github.com/driftyco/ionic-cli) repo.
-
-## Issues
-Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/submit-issue/) to the main Ionic repository.
+Alias name: alias_name
