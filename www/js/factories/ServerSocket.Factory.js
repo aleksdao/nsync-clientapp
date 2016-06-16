@@ -60,7 +60,7 @@ app.factory('socket', function($rootScope, ipAddressFactory){
       });
     },
     startPingRepeat: function(interval){
-      interval = interval || 2000; //if no interval is passed, set to 10 seconds
+      interval = interval || 200; //if no interval is passed, set to 200 ms
 
       if(!_pingProcess)
         _pingProcess = setInterval(this.ping, interval);
