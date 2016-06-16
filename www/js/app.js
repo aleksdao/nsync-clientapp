@@ -29,6 +29,7 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
     /// init server connection ///
     ipAddressFactory.fetchIpAddresses()
     .then(function(){
+      console.log(ipAddressFactory.getSocketIP())
       //connect to client socket
       socket.connect(ipAddressFactory.getSocketIP(), '/client');
       socket.startPingRepeat(200);
@@ -49,7 +50,7 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
       url: '/tweet',
       templateUrl: 'templates/tweet.html',
       controller: function ($scope, $twitterApi, $state, $timeout) {
-      
+
 
         // var tweets = ['"better together."', '"together as one."', '"together"'];
 

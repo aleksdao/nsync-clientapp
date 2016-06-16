@@ -10,9 +10,9 @@ app.controller('LoginController', function ($scope, $state, socket, $cordovaOaut
   $scope.logIn = function(){
 
 
-    // socket.emit('add user', { name: $scope.data.name });
-    // $state.go('stagingPage');
-    $state.go('Tweet');
+    socket.emit('add user', { name: $scope.data.name });
+    $state.go('stagingPage');
+    //$state.go('Tweet');
 
   };
 
