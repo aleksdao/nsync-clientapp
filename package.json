@@ -3,6 +3,7 @@
   "version": "1.1.1",
   "description": "An Ionic project",
   "dependencies": {
+    "angular": "^1.5.6",
     "angular-animate": "^1.5.6",
     "angular-aria": "^1.5.6",
     "angular-material": "^1.1.0-rc.5",
@@ -14,6 +15,7 @@
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^2.0.4",
     "jquery": "^2.2.4",
+    "jssha": "^2.1.0",
     "socket.io": "^1.4.6",
     "socketio": "^1.0.0",
     "tone": "^0.6.1",
@@ -30,7 +32,8 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    "cordova-plugin-inappbrowser"
   ],
   "cordovaPlatforms": [
     "android",

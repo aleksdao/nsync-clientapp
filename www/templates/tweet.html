@@ -1,0 +1,18 @@
+<ion-view view-title="Tweet">
+  <ion-content>
+    <div class="hero no-header flat">
+        <div class="content">
+            <h1>{{tweet.message}}</h1>
+        </div>
+    </div>
+    <button class="button button-full button-balanced" ng-click="submitTweet()">
+      {{message}}
+    </button>
+    <button class="button button-full button-energized" ui-sref="stagingPage">
+      Go to staging area
+    </button>
+    <!-- <div class="bar bar-footer bar-balanced">
+      <div class="title">Go to Staging Area</div>
+    </div> -->
+  </ion-content>
+</ion-view>

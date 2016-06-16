@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material','ngCordova', 'ngAnimate','ionMdInput'])
+var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material','ngCordova', 'ngAnimate','ionMdInput', 'ngTwitter', 'ngCordovaOauth'])
 // var app = angular.module('ionic-socketio-chat-client', ['ionic', 'ngCordova', 'ngAnimate'])
 
 .run(function($ionicPlatform, ipAddressFactory, socket) {
@@ -45,19 +45,47 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
       templateUrl: 'templates/login.html',
       controller: 'LoginController'
     })
+    .state('Tweet', {
+      url: '/tweet',
+      templateUrl: 'templates/tweet.html',
+      controller: function ($scope, $twitterApi, $state, $timeout) {
+      
+
+        // var tweets = ['"better together."', '"together as one."', '"together"'];
+
+        $scope.message = 'Tweet it!';
+
+        $scope.tweet = {
+          message: '"together @ fullstack."',
+          sending: false
+       };
+
+        $scope.submitTweet = function () {
+          $scope.message = 'Posting...'
+          $twitterApi.postStatusUpdate($scope.tweet.message)
+            .then(function (result) {
+              $scope.message = 'Posted! Redirecting to the show...'
+              $timeout(function () {
+                $state.go('stagingPage');
+              }, 1000);
+            })
+        }
+
+      }
+    })
     .state('cameraPage', {
       url: '/cameraPage',
       templateUrl: 'templates/cameraPage.html',
       controller: 'cameraController',
       params: {
-      photoType: 0
-    },
-    resolve: {
-      photoType:	function($stateParams){
-        return	$stateParams.photoType;
-      }//end photoType
-    }//end resolve
-  })
+        photoType: 0
+      },
+      resolve: {
+        photoType:	function($stateParams){
+          return	$stateParams.photoType;
+        }//end photoType
+      }//end resolve
+    })
     .state('showPage', {
       url: '/showPage',
       templateUrl: 'templates/showPage.html',
