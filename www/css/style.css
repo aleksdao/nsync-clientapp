@@ -1,3 +1,27 @@
+@font-face {
+    font-family: 'RalewayLight';
+    src: url('fonts/RalewayLight.eot');
+    src: url('fonts/RalewayLight.eot') format('embedded-opentype'),
+         url('fonts/RalewayLight.woff2') format('woff2'),
+         url('fonts/RalewayLight.woff') format('woff'),
+         url('fonts/RalewayLight.ttf') format('truetype'),
+         url('fonts/RalewayLight.svg#RalewayLight') format('svg');
+}
+
+@font-face {
+    font-family: 'RalewayThin';
+    src: url('fonts/RalewayThin.eot');
+    src: url('fonts/RalewayThin.eot') format('embedded-opentype'),
+         url('fonts/RalewayThin.woff2') format('woff2'),
+         url('fonts/RalewayThin.woff') format('woff'),
+         url('fonts/RalewayThin.ttf') format('truetype'),
+         url('fonts/RalewayThin.svg#RalewayThin') format('svg');
+}
+
+
+body {
+  font-family: 'RalewayLight';
+}
 
 .button.button-grey {
     border-color: #585858;
@@ -127,7 +151,11 @@ a.item.ng-binding{
 #stagingPage{
   background-color: #010101;
   text-align: center;
-  color: #46d4a9;
+  font-size: 20px;
+  color: #f6f6f6;
+  font-family: 'RalewayLight';
+  background-size: cover;
+
 }
 #showPage {
   background-color: #010101;
@@ -137,7 +165,8 @@ a.item.ng-binding{
   background-color: #010101;
   text-align: center;
   color: white;
-  background: url('../img/concert.jpg') center;
+  background: url('../img/samplebg.png') center;
+  background-size: cover;
 
 }
 
@@ -155,6 +184,21 @@ a.item.ng-binding{
 }
 
 #loginPage {
-  background: url('../img/samplebg.gif') center;
+  background: url('../img/samplebg.png') center;
   background-size: cover;
+
+}
+
+.app-logo {
+  margin-top: 100px;
+  font-size: 80px;
+  color: white;
+  font-family: 'RalewayThin'
+}
+
+.center-message{
+  font-size: 30px;
+  margin-top: 100px;
+  color: white;
+  font-family: 'RalewayLight'
 }
