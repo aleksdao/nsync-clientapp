@@ -12,11 +12,11 @@ app.controller('LoginController', function ($scope, $state, socket, $cordovaOaut
 
     socket.emit('add user', { name: $scope.data.name });
     $state.go('stagingPage');
-    //$state.go('Tweet');
+
 
   };
 
-
+  $scope.loggedIntoTwitter = false;
 
   $scope.logIntoTwitter = function () {
     myTwitterToken = JSON.parse(window.localStorage.getItem(twitterKey));
@@ -26,7 +26,14 @@ app.controller('LoginController', function ($scope, $state, socket, $cordovaOaut
           myTwitterToken = result;
           window.localStorage.setItem(twitterKey, JSON.stringify(myTwitterToken));
           $twitterApi.configure(clientId, clientSecret, myTwitterToken);
-          $state.go('Tweet', { token: myTwitterToken });
+          $twitterApi.getRequest('https://api.twitter.com/1.1/account/settings.json')
+            .then(function (data) {
+              $scope.data.name = data.screen_name;
+              $scope.loggedIntoTwitter = true;
+
+            })
+
+          // $state.go('Tweet', { token: myTwitterToken });
         }, function(error) {
             console.log(error);
       });
@@ -34,7 +41,14 @@ app.controller('LoginController', function ($scope, $state, socket, $cordovaOaut
     }
     else {
       $twitterApi.configure(clientId, clientSecret, myTwitterToken);
-      $state.go('Tweet', { token: myTwitterToken });
+      $twitterApi.getRequest('https://api.twitter.com/1.1/account/settings.json')
+        .then(function (data) {
+          $scope.data.name = data.screen_name;
+          $scope.loggedIntoTwitter = true;
+
+        })
+
+      // $state.go('Tweet', { token: myTwitterToken });
     }
   }
 
