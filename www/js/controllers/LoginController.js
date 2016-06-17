@@ -12,7 +12,7 @@ app.controller('LoginController', function ($scope, $state, socket, $cordovaOaut
 
     socket.emit('add user', { name: $scope.data.name });
     $state.go('stagingPage');
-    // $state.go('Tweet');
+
 
   };
 

@@ -3,15 +3,15 @@
 <ion-view>
     <ion-content id="loginPage">
       <div class="hero no-header flat">
-          <div class="content">
-              <h1>Pulse</h1>
+          <div>
+              <div class="app-logo"><span>together</span></div>
           </div>
       </div>
-      <ion-md-input class="input-width" ng-model="data.name" placeholder="Your Name" highlight-color="energized" type="text"></ion-md-input>
-      <i class="icon ion-heart"></i>
+      <ion-md-input class="input-width" ng-model="data.name" placeholder="Your Name" highlight-color="calm" type="text"></ion-md-input>
 
       <div class="padding">
-          <button class="button button-full button-assertive ink" ng-click="logIn()" ng-disabled="!data.name">Enter</button>
+          <button class="button button-full button-stable ink" ng-click="logIn()" ng-disabled="!data.name">Enter</button>
+
       </div>
 
       <div class="padding">
