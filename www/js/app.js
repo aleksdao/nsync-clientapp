@@ -49,7 +49,7 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
       url: '/tweet',
       templateUrl: 'templates/tweet.html',
       controller: function ($scope, $twitterApi, $state, $timeout) {
-      
+
 
         // var tweets = ['"better together."', '"together as one."', '"together"'];
 
@@ -60,7 +60,17 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
           sending: false
        };
 
+       $scope.printAccount = function () {
+         console.log('here we are');
+        $twitterApi.getRequest('https://api.twitter.com/1.1/account/settings.json')
+         .then(function (data) {
+           $scope.data = data;
+         })
+       }
+
+
         $scope.submitTweet = function () {
+
           $scope.message = 'Posting...'
           $twitterApi.postStatusUpdate($scope.tweet.message)
             .then(function (result) {
