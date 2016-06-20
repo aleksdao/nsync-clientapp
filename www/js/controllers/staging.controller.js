@@ -1,4 +1,24 @@
-app.controller('StagingController', function ($scope, $state, socket, SequenceHandler) {
+app.controller('StagingController', function ($scope, $state, socket, SequenceHandler, TwitterFactory, $twitterApi, $timeout) {
+
+  $scope.isLoggedIntoTwitter = TwitterFactory.isLoggedIntoTwitter();
+  $scope.data = {
+    tweetMsg: 'enjoy the show together!'
+  }
+
+  $scope.messageStatus = 'Tweet it!';
+  //
+  //
+  $scope.submitTweet = function () {
+
+    $scope.messageStatus = 'Posting...'
+    TwitterFactory.postStatusUpdate($scope.data.tweetMsg)
+      .then(function (result) {
+        $scope.messageStatus = 'Status posted!'
+        $timeout(function () {
+          $state.go('stagingPage');
+        }, 1000);
+      })
+  }
 
   SequenceHandler.init({
       container: '#showPage',

@@ -17,6 +17,13 @@
       <div class="padding">
         <button class="button button-full button-calm ink" ng-show="!loggedIntoTwitter" ng-click="logIntoTwitter()">Log into Twitter</button>
       </div>
-    </ion-content>
 
+      <!-- keep this comment for now -->
+      <button class="button button-balanced button-block"><a class="item" href="#" onclick="window.open('http://192.168.2.54:5000/photoMosaic1', '_system', 'location=yes'); return false;">
+        Open a Browser {{photoIP}}
+      </a></button>
+      <button class="button button-royal button-block"><a class="item" href="#" onclick="window.open('http://192.168.2.54:5000/photoMosaic1', '_blank', 'location=yes'); return false;">
+        Open a Browser {{photoIP}}
+      </a></button>
+    </ion-content>
   </ion-view>
