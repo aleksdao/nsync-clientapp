@@ -2,8 +2,12 @@
     <ion-content id="stagingPage">
       <div>
         <p class="center-message"> Connected to the show... </p>
-        <button style="margin-top:300px" class="button button-stable ink" ui-sref="settingsPage">settings</button>
-
+      </div>
+      <div style="margin-top:300px" layout="column">
+        <button class="button button-stable ink" ui -sref="settingsPage">settings</button>
+        <button class="button button-balanced" ng-show="isLoggedIntoTwitter" ng-click="postStatusUpdate()">
+          {{messageStatus}}
+        </button>
       </div>
     </ion-content>
   </ion-view>
