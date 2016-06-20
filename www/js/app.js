@@ -96,6 +96,15 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
       templateUrl: 'templates/stagingPage.html',
       controller: 'StagingController'
     })
+    .state('contestPage', {
+      url: '/contestPage',
+      templateUrl: 'templates/contestPage.html',
+      controller: 'ContestController',
+      params:{
+        message:null
+      }
+
+    })
     .state('settingsPage', {
       url: '/settingsPage',
       templateUrl: 'templates/settings.html',

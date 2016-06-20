@@ -18,6 +18,10 @@ app.controller('StagingController', function ($scope, $state, socket, SequenceHa
     //pass the photo type data as a paramater to the cameraPage state, changing the words based on the event, 1 for front facing, 0 for selfie
   });
 
+  socket.on('contest winner', function(data){
+    $state.go('contestPage', { message: data });
+  });
+
   socket.on('send message', function(data){
     if(SequenceHandler.getTransportState() === 'stopped'){
 
