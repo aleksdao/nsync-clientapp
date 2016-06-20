@@ -14,7 +14,7 @@ app.controller('StagingController', function ($scope, $state, socket, SequenceHa
 
   socket.on('get photo', function(data){
     console.log('get photo data', data);
-    $state.go('cameraPage',data);
+    $state.go('cameraPage', data);
     //pass the photo type data as a paramater to the cameraPage state, changing the words based on the event, 1 for front facing, 0 for selfie
   });
 
