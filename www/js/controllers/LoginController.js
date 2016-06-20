@@ -28,8 +28,10 @@ app.controller('LoginController', function ($scope, $state, socket, $cordovaOaut
           $twitterApi.configure(clientId, clientSecret, myTwitterToken);
           $twitterApi.getRequest('https://api.twitter.com/1.1/account/settings.json')
             .then(function (data) {
-              $scope.data.name = data.screen_name;
+              // $scope.data.name = data.screen_name;
+              $scope.emit('add user', { name: data.screen_name });
               $scope.loggedIntoTwitter = true;
+              $state.go('stagingPage');
 
             })
 
@@ -43,8 +45,10 @@ app.controller('LoginController', function ($scope, $state, socket, $cordovaOaut
       $twitterApi.configure(clientId, clientSecret, myTwitterToken);
       $twitterApi.getRequest('https://api.twitter.com/1.1/account/settings.json')
         .then(function (data) {
-          $scope.data.name = data.screen_name;
+          // $scope.data.name = data.screen_name;
+          $scope.emit('add user', { name: data.screen_name });
           $scope.loggedIntoTwitter = true;
+          $state.go('stagingPage');
 
         })
 
