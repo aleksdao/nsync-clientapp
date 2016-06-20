@@ -29,7 +29,6 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
     /// init server connection ///
     ipAddressFactory.fetchIpAddresses()
     .then(function(){
-      console.log(ipAddressFactory.getSocketIP())
       //connect to client socket
       socket.connect(ipAddressFactory.getSocketIP(), '/client');
       socket.startPingRepeat(200);
@@ -106,6 +105,15 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
       url: '/stagingPage',
       templateUrl: 'templates/stagingPage.html',
       controller: 'StagingController'
+    })
+    .state('contestPage', {
+      url: '/contestPage',
+      templateUrl: 'templates/contestPage.html',
+      controller: 'ContestController',
+      params:{
+        message:null
+      }
+
     })
     .state('settingsPage', {
       url: '/settingsPage',
