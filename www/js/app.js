@@ -20,7 +20,9 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
       cordova.plugins.Keyboard.disableScroll(true);
     }
     ionic.Platform.fullScreen();
-    window.plugins.insomnia.keepAwake();
+
+    if(window.plugins)
+      window.plugins.insomnia.keepAwake();
 
     if(window.StatusBar) {
       StatusBar.hide();
