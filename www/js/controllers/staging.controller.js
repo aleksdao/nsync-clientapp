@@ -8,7 +8,7 @@ app.controller('StagingController', function ($scope, $state, socket, SequenceHa
   $scope.messageStatus = 'Tweet it!';
   //
   //
-  $scope.submitTweet = function () {
+  $scope.postStatusUpdate = function () {
 
     $scope.messageStatus = 'Posting...'
     TwitterFactory.postStatusUpdate($scope.data.tweetMsg)
