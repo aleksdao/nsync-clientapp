@@ -1,4 +1,4 @@
-app.factory('imageFactory',function($http, ionicReady, $cordovaFileTransfer, $cordovaToast, $cordovaVibration){
+app.factory('imageFactory',function($http, ionicReady, $cordovaFileTransfer, $cordovaToast, $cordovaVibration, $state){
 
 	return{
 
@@ -10,7 +10,6 @@ app.factory('imageFactory',function($http, ionicReady, $cordovaFileTransfer, $co
 			  var ft = new FileTransfer();
 
         var server = photoIP +'/api/photo';
-				console.log('server inside here!!!!!!!!', server);
 
         var trustAllHosts = true;
 
@@ -38,7 +37,7 @@ app.factory('imageFactory',function($http, ionicReady, $cordovaFileTransfer, $co
 										// verticalPadding: 16 // iOS default 12, Android default 30
 									}
 								});
-
+								$state.go('stagingPage');
               },
               function(err) {
                 console.log('error in here dude: ' + err);
