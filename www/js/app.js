@@ -45,47 +45,13 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
   $stateProvider
     .state('Login', {
       url: '/login',
-
       templateUrl: 'templates/login.html',
       controller: 'LoginController'
     })
     .state('Tweet', {
       url: '/tweet',
       templateUrl: 'templates/tweet.html',
-      controller: function ($scope, $twitterApi, $state, $timeout) {
-
-
-        // var tweets = ['"better together."', '"together as one."', '"together"'];
-
-        $scope.message = 'Tweet it!';
-
-        $scope.tweet = {
-          message: '"together @ fullstack."',
-          sending: false
-       };
-
-       $scope.printAccount = function () {
-         console.log('here we are');
-        $twitterApi.getRequest('https://api.twitter.com/1.1/account/settings.json')
-         .then(function (data) {
-           $scope.data = data;
-         })
-       }
-
-
-        $scope.submitTweet = function () {
-
-          $scope.message = 'Posting...'
-          $twitterApi.postStatusUpdate($scope.tweet.message)
-            .then(function (result) {
-              $scope.message = 'Posted! Redirecting to the show...'
-              $timeout(function () {
-                $state.go('stagingPage');
-              }, 1000);
-            })
-        }
-
-      }
+      controller: 'TweetController'
     })
     .state('cameraPage', {
       url: '/cameraPage',
@@ -122,12 +88,27 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
       params:{
         message:null
       }
-
     })
     .state('settingsPage', {
       url: '/settingsPage',
       templateUrl: 'templates/settings.html',
       controller: 'SettingsController'
+    })
+    .state('mosaicsPage', {
+      url: '/mosaicsPage',
+      templateUrl: 'templates/mosaicsPage.html',
+      controller: 'MosaicsController',
+      params: {
+        mosaicName_URL: [{
+          name: 'FunPhoto',
+          mosaicURL: 'http://192.168.2.47:5000/#photoMosaic/1'
+        }]
+      },
+      resolve: {
+        mosaicName_URL:	function($stateParams){
+          return	$stateParams.mosaicName_URL;
+        }//end mosaicNames
+      }//end resolve
     });
   $urlRouterProvider.otherwise('/errorPage');
 });

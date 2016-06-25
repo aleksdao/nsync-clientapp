@@ -25,9 +25,9 @@ app.controller('LoginController', function ($scope, $state, socket, $cordovaOaut
       $scope.isLoggedIntoTwitter = true;
       $state.go('stagingPage');
 
-    })
+    });
 
-  }
+  };
 
 
 
