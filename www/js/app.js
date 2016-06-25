@@ -99,14 +99,11 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
       templateUrl: 'templates/mosaicsPage.html',
       controller: 'MosaicsController',
       params: {
-        mosaicName_URL: [{
-          name: 'FunPhoto',
-          mosaicURL: 'http://192.168.2.47:5000/#photoMosaic/1'
-        }]
+        data: [ { mosaicNum: 1, name: 'FunPhotoZ', mosaicURL: '/#photoMosaic/1' } ]
       },
       resolve: {
-        mosaicName_URL:	function($stateParams){
-          return	$stateParams.mosaicName_URL;
+        data:	function($stateParams){
+          return	$stateParams.data;
         }//end mosaicNames
       }//end resolve
     });
