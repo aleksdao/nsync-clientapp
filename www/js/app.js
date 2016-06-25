@@ -99,13 +99,13 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
       templateUrl: 'templates/mosaicsPage.html',
       controller: 'MosaicsController',
       params: {
-        data: [ { mosaicNum: 1, name: 'FunPhotoZ', mosaicURL: '/#photoMosaic/1' } ]
-      },
-      resolve: {
-        data:	function($stateParams){
-          return	$stateParams.data;
-        }//end mosaicNames
-      }//end resolve
+        data: null
+      }
+      // resolve: {
+      //   data:	function($stateParams){
+      //     return	$stateParams.data;
+      //   }//end mosaicNames
+      // }//end resolve
     });
   $urlRouterProvider.otherwise('/errorPage');
 });

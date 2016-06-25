@@ -58,15 +58,16 @@ app.controller('StagingController', function ($scope, $state, socket, SequenceHa
 //show mosaic to clients
   socket.on('mosaic ready', function(data){
     if(SequenceHandler.getTransportState() === 'stopped'){
-      window.plugins.toast.showWithOptions({
-        message: data.text,
-        duration: data.duration, // 2000 ms
-        position: "center",
-        styling: {
-            textSize: 30 // Default is approx. 13.
-            }
-      });//end toast
-      $state.go('mosaicsPage', data);
+      // window.plugins.toast.showWithOptions({
+      //   message: data.text,
+      //   duration: data.duration, // 2000 ms
+      //   position: "center",
+      //   styling: {
+      //       textSize: 30 // Default is approx. 13.
+      //       }
+      // });//end toast
+      // console.log('inside handler',data);
+      $state.go('mosaicsPage', {data: data});
     }//end if
   });
 

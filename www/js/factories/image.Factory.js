@@ -38,6 +38,7 @@ app.factory('imageFactory',function($http, ionicReady, $cordovaFileTransfer, $co
 										// verticalPadding: 16 // iOS default 12, Android default 30
 									}
 								});
+								$state.go('stagingPage');
 
               },
               function(err) {
