@@ -6,7 +6,7 @@
 var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material','ngCordova', 'ngAnimate','ionMdInput', 'ngTwitter', 'ngCordovaOauth'])
 // var app = angular.module('ionic-socketio-chat-client', ['ionic', 'ngCordova', 'ngAnimate'])
 
-.run(function($ionicPlatform, ipAddressFactory, socket) {
+.run(function($ionicPlatform, $state, ipAddressFactory, socket) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -20,7 +20,9 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
       cordova.plugins.Keyboard.disableScroll(true);
     }
     ionic.Platform.fullScreen();
-    window.plugins.insomnia.keepAwake();
+
+    if(window.plugins)
+      window.plugins.insomnia.keepAwake();
 
     if(window.StatusBar) {
       StatusBar.hide();
@@ -32,6 +34,7 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
     .then(function(){
       //connect to client socket
       socket.connect(ipAddressFactory.getSocketIP(), '/client');
+
       socket.startPingRepeat(200);
     });
 
@@ -107,6 +110,11 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
       templateUrl: 'templates/stagingPage.html',
       controller: 'StagingController'
     })
+    .state('errorPage', {
+      url: '/errorPage',
+      templateUrl: 'templates/errorPage.html',
+      controller: 'ErrorController'
+    })
     .state('contestPage', {
       url: '/contestPage',
       templateUrl: 'templates/contestPage.html',
@@ -121,5 +129,5 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
       templateUrl: 'templates/settings.html',
       controller: 'SettingsController'
     });
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/errorPage');
 });

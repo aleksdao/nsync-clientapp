@@ -32,6 +32,7 @@ app.factory('socket', function($rootScope, ipAddressFactory){
     connect: function(serverUrl, namespace){
       _socket = io.connect(serverUrl + namespace);
       this.ping(); //get the inital roundtrip time just in case it doesn't get called later on
+
     },
     on: function (eventName, callback) {
       _socket.on(eventName, function () {
@@ -71,6 +72,12 @@ app.factory('socket', function($rootScope, ipAddressFactory){
     },
     getLatency: function(){
       return _serverLatency;
+    },
+    connected: function(){
+      if(!_socket)
+        return false;
+        
+      return _socket.connected;
     }
   };
 });
