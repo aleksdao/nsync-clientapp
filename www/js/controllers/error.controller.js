@@ -3,7 +3,7 @@ app.controller('ErrorController', function($scope, $interval, $state, socket, ip
   if(socket.connected()){
     $state.go('Login');
   }
-
+console.log('socket connected',socket.connected());
   var counter = 0;
 
   //set up an interval to check connection status

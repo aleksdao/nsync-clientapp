@@ -4,7 +4,8 @@
         <p class="center-message"> Connected to the show... </p>
       </div>
       <div style="margin-top:300px" layout="column">
-        <button class="button button-stable ink" ui -sref="settingsPage">settings</button>
+        <button class="button button-stable ink" ui-sref="settingsPage">settings</button>
+        <button class="button button-stable ink" ui-sref="mosaicsPage({data:[{ mosaicNum: 1, name: 'FunPhoto', mosaicURL: 'http://192.168.2.47:5000/#photoMosaic/1' }]})">Test to Mosaics</button>
         <button class="button button-balanced" ng-show="isLoggedIntoTwitter" ng-click="postStatusUpdate()">
           {{messageStatus}}
         </button>

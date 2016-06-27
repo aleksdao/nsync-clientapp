@@ -1,0 +1,22 @@
+  <ion-view>
+    <ion-content id="stagingPage">
+      <div>
+        <p class="center-message"> Checkout these mosaics... </p>
+      </div>
+      <div style="margin-top:300px" layout="column">
+        <!-- <button class="button button-royal button-block"><a class="item" href="#" onclick="window.open('http://192.168.2.47:5000/#photoMosaic/1', '_blank', 'location=yes'); return false;">
+          Open a Mosaic
+        </a></button> -->
+
+        <ul class="container">
+            <li ng-repeat="mosaic in mosaicName_URL" class="well"><a class="item" href="#" ng-click="openMosaic(mosaic.mosaicURL)">{{mosaic.name}}</a></li>
+        </ul>
+
+      </div>
+    </ion-content>
+  </ion-view>
+
+  <!-- keep this comment for now -->
+  <!-- <a class="item" href="#" onclick="window.open('http://192.168.2.54:5000', '_blank', 'location=yes'); return false;">
+                  Open a Browser {{photoIP}}
+              </a> -->
