@@ -1,4 +1,4 @@
-app.factory('imageFactory',function($http, ionicReady, $cordovaFileTransfer, $cordovaToast, $cordovaVibration){
+app.factory('imageFactory',function($http, ionicReady, $cordovaFileTransfer, $cordovaToast, $cordovaVibration, $state){
 
 	return{
 
