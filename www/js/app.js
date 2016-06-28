@@ -35,7 +35,7 @@ var app = angular.module('ionic-socketio-chat-client', ['ionic','ionic-material'
       //connect to client socket
       socket.connect(ipAddressFactory.getSocketIP(), '/client');
 
-      socket.startPingRepeat(200);
+      socket.startPingRepeat(100);
     });
 
   });
