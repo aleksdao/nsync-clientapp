@@ -2,11 +2,12 @@ app.factory('TwitterFactory', function ($twitterApi, $cordovaOauth) {
 
   var factory = {};
   var loggedIntoTwitter = false;
+  var twitterAuth = require('../../../keys').TWITTER;
 
   var myTwitterToken;
   var twitterKey = 'STORAGE.TWITTER.KEY';
-  var clientId = 'rMkOV182Kn9JR6uLSGb7hOnoF';
-  var clientSecret = 'gIkO3kxjzCANbdRyWflMoy98r1kyabeX55FaAIUF2DkE9snJ81';
+  var clientId = twitterAuth.clientId;
+  var clientSecret = twitterAuth.clientSecret;
 
   factory.logIntoTwitter = function () {
 
